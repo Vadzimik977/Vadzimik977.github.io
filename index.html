@@ -17,8 +17,6 @@
             transition: background-image 0.3s ease; /* Анимация перехода фона */
         }
         #clickButton {
-            width: 250px;
-            height: 250px;
             font-size: 20px;
             padding: 10px 20px;
             cursor: pointer;
@@ -31,8 +29,6 @@
             transition: background-color 0.3s ease; /* Анимация перехода цвета кнопки */
         }
         #clickButton:active {
-            width: 254px;
-            height: 254px;
             background-color: rgba(192, 57, 43, 0.5); /* Цвет при активации (нажатии) */
         }
         #clickButton img {
@@ -70,13 +66,11 @@
 </head>
 <body>
     <h1>Простая игра</h1>
-    <button id="clickButton" onclick="changeColorAndIncrement()">
-        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> 
-        <h2>Жми меня!</h2>
+    <button id="clickButton" onclick="changeColorAndIncrement(event)">
+        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> Нажми меня!
         <span id="counter">1</span>
     </button>
-<p id="clickCount">Количество нажатий: <span id="count">0</span></p>
-
+    <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
     <script>
         function changeColorAndIncrement(event) {
             var button = document.getElementById('clickButton');
@@ -102,14 +96,9 @@
             return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
         }
 
-        
-    </script>
-
-    <script>
-        let count = 0;
         function incrementCount() {
-            count++;
-            document.getElementById('count').innerText = count;
+            var counter = document.getElementById('counter');
+            counter.textContent = parseInt(counter.textContent) + 1;
         }
     </script>
 </body>
