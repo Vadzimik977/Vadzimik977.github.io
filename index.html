@@ -67,6 +67,29 @@
             font-size: 24px;
             margin-top: 20px;
         }
+      #counter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0; /* Начальная непрозрачность */
+            font-size: 24px;
+            color: #ffffff;
+            animation: showAndHide 1s ease forwards; /* Анимация отображения и исчезновения */
+        }
+        @keyframes showAndHide {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) translateY(-20px);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) translateY(-40px);
+            }
    </style>
 </head>
 
@@ -81,7 +104,8 @@
 
    <h1>Простая игра</h1>
     <button id="clickButton" onclick="changeColorAndIncrement()">
-        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> 
+        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан">
+       <span id="counter">1</span>
     </button>
    <h1>Нажми меня</h1>
     <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
@@ -91,8 +115,17 @@
    <script>
         function changeColorAndIncrement() {
             var button = document.getElementById('clickButton');
+            var counter = document.getElementById('counter');
             var randomColor = getRandomColor();
+
+            // Изменение цвета кнопки
             button.style.backgroundColor = randomColor;
+
+            // Отображение и анимация исчезновения цифры
+            counter.style.opacity = 1;
+            counter.style.animation = 'showAndHide 1s ease forwards';
+
+            // Увеличение счетчика
             incrementCount();
         }
 
