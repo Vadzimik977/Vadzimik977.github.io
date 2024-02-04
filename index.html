@@ -77,6 +77,10 @@
             color: #ffffff;
             animation: showAndHide 2s ease forwards; /* Анимация отображения и исчезновения */
         }
+      .show-and-hide {
+            opacity: 0; /* Начальная непрозрачность */
+            animation: showAndHide 1s ease forwards; /* Анимация отображения и исчезновения */
+        }
         @keyframes showAndHide {
             0% {
                 opacity: 1;
@@ -122,8 +126,10 @@
             button.style.backgroundColor = randomColor;
 
             // Отображение и анимация исчезновения цифры
-            counter.style.opacity = 1;
-            counter.style.animation = 'showAndHide 1s ease forwards';
+            counter.classList.add('show-and-hide');
+            counter.addEventListener('animationend', function() {
+                counter.classList.remove('show-and-hide');
+            });
 
             // Увеличение счетчика
             incrementCount();
