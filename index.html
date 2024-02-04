@@ -1,11 +1,10 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Простая игра</title>
-   <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
     <style>
         body {
             text-align: center;
@@ -25,25 +24,24 @@
             border: none;
             color: #ffffff;
             position: relative;
+            background-color: transparent; /* Прозрачный фон */
+            overflow: hidden;
         }
         #clickButton:active {
-            width: 300px;
-            height: 300px;
             background-color: rgba(192, 57, 43, 0.5); /* Цвет при активации (нажатии) */
         }
         #clickButton img {
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             margin-right: 10px;
         }
         #counter {
             position: absolute;
-            top: 50%;
-            left: 50%;
-/*             transform: translate(-50%, -50%); */
             font-size: 24px;
             color: #ffffff;
+            transform: translate(-50%, -50%);
+            animation: showAndHide 1s ease forwards; /* Анимация отображения и исчезновения */
         }
         .show-and-hide {
             opacity: 0; /* Начальная непрозрачность */
@@ -56,11 +54,11 @@
             }
             50% {
                 opacity: 1;
-                transform: translateY(-20px);
+                transform: translateY(-50px);
             }
             100% {
                 opacity: 0;
-                transform: translateY(-40px);
+                transform: translateY(-100px);
             }
         }
     </style>
@@ -68,15 +66,12 @@
 <body>
     <h1>Простая игра</h1>
     <button id="clickButton" onclick="changeBackgroundAndIncrement()">
-        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> 
+        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> Нажми меня!
         <span id="counter">1</span>
-      
     </button>
-  <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
-  <h1>Нажми меня!</h1>
-  
+
     <script>
-        function changeBackgroundAndIncrement(event) {
+        function changeBackgroundAndIncrement() {
             var button = document.getElementById('clickButton');
             var counter = document.getElementById('counter');
             var randomColor = getRandomColor();
@@ -87,8 +82,8 @@
             // Отображение и анимация исчезновения цифры
             counter.classList.remove('show-and-hide');
             void counter.offsetWidth; // Перезапускаем анимацию
-            counter.style.left = `${event.clientX}px`; // Устанавливаем позицию анимации по X
-            counter.style.top = `${event.clientY}px`; // Устанавливаем позицию анимации по Y
+            counter.style.left = `${button.offsetWidth / 2}px`; // Устанавливаем позицию анимации по X
+            counter.style.top = `${button.offsetHeight / 2}px`; // Устанавливаем позицию анимации по Y
             counter.classList.add('show-and-hide');
 
             // Увеличение счетчика
@@ -100,16 +95,9 @@
             return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
         }
 
-        
-    </script>
-  <script>
-        let count = 0;
         function incrementCount() {
-            count++;
-            document.getElementById('count').innerText = count;
+            // Ваш JavaScript-код для увеличения счетчика
         }
     </script>
 </body>
 </html>
-
-
