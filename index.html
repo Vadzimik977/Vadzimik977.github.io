@@ -29,11 +29,13 @@
             transition: background-color 0.3s ease; /* Анимация перехода цвета кнопки */
         }
         #clickButton:active {
+            width: 250px;
+            height: 250px;
             background-color: rgba(192, 57, 43, 0.5); /* Цвет при активации (нажатии) */
         }
         #clickButton img {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             margin-right: 10px;
         }
@@ -67,7 +69,7 @@
 <body>
     <h1>Простая игра</h1>
     <button id="clickButton" onclick="changeColorAndIncrement()">
-        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> Нажми меня!
+        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> 
         <span id="counter">1</span>
     </button>
     <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
