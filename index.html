@@ -76,19 +76,20 @@
   <h1>Жми меня!</h1>
   
     <script>
-        function changeBackgroundAndIncrement() {
+        function changeBackgroundAndIncrement(event) {
             var button = document.getElementById('clickButton');
             var counter = document.getElementById('counter');
             var randomColor = getRandomColor();
 
             // Изменение фона
-            // document.body.style.backgroundImage = `url('${randomColor}')`;
+            document.body.style.backgroundImage = `url('${randomColor}')`;
 
             // Отображение и анимация исчезновения цифры
+            counter.classList.remove('show-and-hide');
+            void counter.offsetWidth; // Перезапускаем анимацию
+            counter.style.left = `${event.clientX}px`; // Устанавливаем позицию анимации по X
+            counter.style.top = `${event.clientY}px`; // Устанавливаем позицию анимации по Y
             counter.classList.add('show-and-hide');
-            counter.addEventListener('animationend', function() {
-                counter.classList.remove('show-and-hide');
-            });
 
             // Увеличение счетчика
             incrementCount();
