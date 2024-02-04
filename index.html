@@ -68,8 +68,11 @@
     <button id="clickButton" onclick="changeBackgroundAndIncrement()">
         <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> 
         <span id="counter">1</span>
+      
     </button>
-
+  <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
+  <h1>Жми меня!</h1>
+  
     <script>
         function changeBackgroundAndIncrement() {
             var button = document.getElementById('clickButton');
@@ -94,8 +97,13 @@
             return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
         }
 
+        
+    </script>
+  <script>
+        let count = 0;
         function incrementCount() {
-            // Ваш JavaScript-код для увеличения счетчика
+            count++;
+            document.getElementById('count').innerText = count;
         }
     </script>
 </body>
