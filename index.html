@@ -43,6 +43,16 @@
             font-size: 20px;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 50%; /* Добавляем скругление для создания круглой кнопки */
+            border: none; /* Убираем границу у кнопки */
+            background-color: #f1c40f; /* Задаем цвет фона кнопки */
+            color: #ffffff; /* Задаем цвет текста кнопки */
+        }
+        #clickButton img {
+            width: 100px; /* Задаем ширину изображения банана */
+            height: 100px; /* Задаем высоту изображения банана */
+            border-radius: 50%; /* Добавляем скругление для создания круглого изображения */
+            margin-right: 10px; /* Добавляем небольшой отступ справа от изображения */
         }
         #clickCount {
             font-size: 24px;
@@ -61,7 +71,9 @@
    <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной-->
 
    <h1>Простая игра</h1>
-    <button id="clickButton" onclick="incrementCount()">Нажми меня!</button>
+    <button id="clickButton" onclick="incrementCount()">
+        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> Нажми меня!
+    </button>
     <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
 
     
