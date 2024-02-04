@@ -70,7 +70,7 @@
         <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> Нажми меня!
         <span id="counter">1</span>
     </button>
-    <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
+
     <script>
         function changeColorAndIncrement(event) {
             var button = document.getElementById('clickButton');
@@ -83,8 +83,8 @@
             // Отображение и анимация исчезновения цифры
             counter.classList.remove('show-and-hide');
             void counter.offsetWidth; // Перезапускаем анимацию
-            counter.style.left = `${event.clientX}px`; // Устанавливаем позицию анимации по X
-            counter.style.top = `${event.clientY}px`; // Устанавливаем позицию анимации по Y
+            counter.style.left = `${event.clientX - button.getBoundingClientRect().left}px`; // Устанавливаем позицию анимации по X
+            counter.style.top = `${event.clientY - button.getBoundingClientRect().top}px`; // Устанавливаем позицию анимации по Y
             counter.classList.add('show-and-hide');
 
             // Увеличение счетчика
