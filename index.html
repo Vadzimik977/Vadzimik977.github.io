@@ -9,12 +9,18 @@
 
    <style>
       body{
-         color: var(--tg-theme-text-color);
+         text-align: center;
+         margin-top: 50px;
+         background-image: url('https://i.pinimg.com/originals/6f/06/fd/6f06fd23b4ab34a36c4593dd0279e8bb.gif');
+         background-size: cover;
+         background-repeat: no-repeat;
+         background-attachment: fixed;
+/*          color: var(--tg-theme-text-color);
          background: var(--tg-theme-bg-color);
          display: flex;
          flex-direction: column;
          align-items: center;
-         font-size: 18px;
+         font-size: 18px; */
       }
       
       .hint{
@@ -65,13 +71,13 @@
 <!--    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
 <!--    </div> -->
 <!--    <p>Just text</p> <!--Просто текст для проверки-->
-<!--    <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки--> --> -->
-<!--    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки--> -->
-<!--    <button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку--> -->
-<!--    <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной--> --> -->
+<!--    <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки--> 
+<!--    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки--> 
+<!--    <button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
+<!--    <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной--> 
 
    <h1>Простая игра</h1>
-    <button id="clickButton" onclick="changeColor()">
+    <button id="clickButton" onclick="changeColorAndIncrement()">
         <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> 
     </button>
    <h1>Нажми меня</h1>
@@ -80,10 +86,11 @@
     
 </body>
    <script>
-        function changeColor() {
+        function changeColorAndIncrement() {
             var button = document.getElementById('clickButton');
             var randomColor = getRandomColor();
             button.style.backgroundColor = randomColor;
+            incrementCount();
         }
 
         function getRandomColor() {
