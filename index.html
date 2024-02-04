@@ -99,9 +99,12 @@
             return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
         }
 
+    </script>
+    <script>
+        let count = 0;
         function incrementCount() {
-            var counter = document.getElementById('counter');
-            counter.textContent = parseInt(counter.textContent) + 1;
+            count++;
+            document.getElementById('count').innerText = count;
         }
     </script>
 </body>
