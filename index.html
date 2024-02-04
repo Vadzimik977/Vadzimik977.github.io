@@ -17,8 +17,8 @@
             transition: background-image 0.3s ease; /* Анимация перехода фона */
         }
         #clickButton {
-            width: 250px;
-            height: 250px;
+            width: 251px;
+            height: 251px;
             font-size: 20px;
             padding: 10px 20px;
             cursor: pointer;
@@ -48,6 +48,11 @@
             transform: translate(-50%, -50%);
             /* Убрана анимация исчезновения */
         }
+        #count {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ffffff;
+        }
         .show-and-hide {
             opacity: 0; /* Начальная непрозрачность */
             animation: showAndHide 1s ease forwards; /* Анимация отображения и исчезновения */
@@ -73,13 +78,17 @@
     <button id="clickButton" onclick="changeColorAndIncrement(event)">
         <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> 
         <span id="counter">1</span>
-        <h2>Жми меня</h2>
+        <h2>Жми меня!</h2>
     </button>
-    <p id="clickCount">Количество нажатий: <span id="counter">0</span></p>
+    <div id="count">Количество нажатий: <span id="clickCount">0</span></div>
+
     <script>
+        var clickCounter = 0;
+
         function changeColorAndIncrement(event) {
             var button = document.getElementById('clickButton');
             var counter = document.getElementById('counter');
+            var clickCount = document.getElementById('clickCount');
             var randomColor = getRandomColor();
 
             // Изменение цвета кнопки
@@ -92,18 +101,14 @@
             counter.style.top = `${event.clientY - button.getBoundingClientRect().top}px`; // Устанавливаем позицию анимации по Y
             counter.classList.add('show-and-hide');
 
-            // Увеличение счетчика
-            incrementCount();
+            // Увеличение счетчика и вывод количества нажатий
+            clickCounter++;
+            clickCount.textContent = clickCounter;
         }
 
         function getRandomColor() {
             // Возвращает случайный цвет в формате rgb
             return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-        }
-
-        function incrementCount() {
-            var counter = document.getElementById('counter');
-            counter.textContent = parseInt(counter.textContent) + 1;
         }
     </script>
 </body>
