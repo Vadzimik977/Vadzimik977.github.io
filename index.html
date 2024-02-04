@@ -28,11 +28,13 @@
             overflow: hidden;
         }
         #clickButton:active {
+            width: 250px;
+            height: 250px;
             background-color: rgba(192, 57, 43, 0.5); /* Цвет при активации (нажатии) */
         }
         #clickButton img {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             margin-right: 10px;
         }
@@ -66,10 +68,10 @@
 <body>
     <h1>Простая игра</h1>
     <button id="clickButton" onclick="changeBackgroundAndIncrement()">
-        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> Нажми меня!
+        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан">
         <span id="counter">1</span>
     </button>
-
+     <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
     <script>
         function changeBackgroundAndIncrement() {
             var button = document.getElementById('clickButton');
@@ -95,8 +97,13 @@
             return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
         }
 
+        
+    </script>
+    <script>
+        let count = 0;
         function incrementCount() {
-            // Ваш JavaScript-код для увеличения счетчика
+            count++;
+            document.getElementById('count').innerText = count;
         }
     </script>
 </body>
