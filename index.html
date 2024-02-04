@@ -17,8 +17,6 @@
             transition: background-image 0.3s ease; /* Анимация перехода фона */
         }
         #clickButton {
-            width: 250px;
-            height: 250px;
             font-size: 20px;
             padding: 10px 20px;
             cursor: pointer;
@@ -31,8 +29,6 @@
             transition: background-color 0.3s ease; /* Анимация перехода цвета кнопки */
         }
         #clickButton:active {
-            width: 255px;
-            height: 255px;
             background-color: rgba(192, 57, 43, 0.5); /* Цвет при активации (нажатии) */
         }
         #clickButton img {
@@ -46,7 +42,7 @@
             font-size: 24px;
             color: #ffffff;
             transform: translate(-50%, -50%);
-            animation: showAndHide 1s ease forwards; /* Анимация отображения и исчезновения */
+            /* Убрана анимация исчезновения */
         }
         .show-and-hide {
             opacity: 0; /* Начальная непрозрачность */
@@ -72,10 +68,11 @@
     <h1>Простая игра</h1>
     <button id="clickButton" onclick="changeColorAndIncrement()">
         <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> 
-        <h1>Нажми меня!</h1>
+        <h2>Жми меня!</h2>
         <span id="counter">1</span>
     </button>
-    <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
+<p id="clickCount">Количество нажатий: <span id="count">0</span></p>
+  
     <script>
         function changeColorAndIncrement() {
             var button = document.getElementById('clickButton');
@@ -98,7 +95,6 @@
             // Возвращает случайный цвет в формате rgb
             return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
         }
-
     </script>
     <script>
         let count = 0;
@@ -109,11 +105,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
