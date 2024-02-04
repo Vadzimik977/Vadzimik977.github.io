@@ -1,129 +1,83 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+<html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Простая игра</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простая игра</title>
    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
-
-   <style>
-      body{
-         text-align: center;
-         margin-top: 50px;
-         background-image: url('https://i.pinimg.com/originals/6f/06/fd/6f06fd23b4ab34a36c4593dd0279e8bb.gif');
-         background-size: cover;
-         background-repeat: no-repeat;
-         background-attachment: fixed;
-         background-position: center center;
-/*          color: var(--tg-theme-text-color);
-         background: var(--tg-theme-bg-color);
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         font-size: 18px; */
-      }
-      
-      .hint{
-         color: var(--tg-theme-hint-color);
-      }
-
-      .link{
-         color: var(--tg-theme-link-color);
-      }
-
-      .button{
-         background: var(--tg-theme-button-color);
-         color: var(--tg-theme-button-text-color);
-         border: none;
-         font-size: 18px;
-      }
-
-      .button:not(:last-child){
-         margin-bottom: 20px
-      }
-
-      #usercard{
-         text-align: center;
-      }
-      #clickButton {
-            width: 200px;
-            height: 200px;
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            background-image: url('https://i.pinimg.com/originals/6f/06/fd/6f06fd23b4ab34a36c4593dd0279e8bb.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            transition: background-image 0.3s ease; /* Анимация перехода фона */
+        }
+        #clickButton {
             font-size: 20px;
             padding: 10px 20px;
             cursor: pointer;
-            border-radius: 50%; /* Добавляем скругление для создания круглой кнопки */
-            border: none; /* Убираем границу у кнопки */
-            background-color: #f1c40f; /* Задаем цвет фона кнопки */
-            color: #ffffff; /* Задаем цвет текста кнопки */
+            border-radius: 50%;
+            border: none;
+            color: #ffffff;
+            position: relative;
+        }
+        #clickButton:active {
+            background-color: rgba(192, 57, 43, 0.5); /* Цвет при активации (нажатии) */
         }
         #clickButton img {
-            width: 100px; /* Задаем ширину изображения банана */
-            height: 100px; /* Задаем высоту изображения банана */
-            border-radius: 50%; /* Добавляем скругление для создания круглого изображения */
-            margin-right: 10px; /* Добавляем небольшой отступ справа от изображения */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 10px;
         }
-        #clickCount {
-            font-size: 24px;
-            margin-top: 20px;
-        }
-      #counter {
+        #counter {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0; /* Начальная непрозрачность */
             font-size: 24px;
             color: #ffffff;
-            animation: showAndHide 2s ease forwards; /* Анимация отображения и исчезновения */
         }
-      .show-and-hide {
+        .show-and-hide {
             opacity: 0; /* Начальная непрозрачность */
             animation: showAndHide 1s ease forwards; /* Анимация отображения и исчезновения */
         }
         @keyframes showAndHide {
             0% {
                 opacity: 1;
-                transform: translate(-50%, -50%) translateY(0);
+                transform: translateY(0);
             }
             50% {
                 opacity: 1;
-                transform: translate(-50%, -50%) translateY(-20px);
+                transform: translateY(-20px);
             }
             100% {
                 opacity: 0;
-                transform: translate(-50%, -50%) translateY(-40px);
+                transform: translateY(-40px);
             }
-   </style>
+        }
+    </style>
 </head>
-
 <body>
-<!--    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
-<!--    </div> -->
-<!--    <p>Just text</p> <!--Просто текст для проверки-->
-<!--    <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки--> 
-<!--    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки--> 
-<!--    <button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
-<!--    <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной--> 
-
-   <h1>Простая игра</h1>
-    <button id="clickButton" onclick="changeColorAndIncrement()">
-        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан">
-       <span id="counter">1</span>
+    <h1>Простая игра</h1>
+    <button id="clickButton" onclick="changeBackgroundAndIncrement()">
+        <img src="https://pngicon.ru/file/uploads/banan.png" alt="Банан"> Нажми меня!
+        <span id="counter">1</span>
     </button>
-   <h1>Жми меня</h1>
-    <p id="clickCount">Количество нажатий: <span id="count">0</span></p>
 
-    
-</body>
-   <script>
-        function changeColorAndIncrement() {
+    <script>
+        function changeBackgroundAndIncrement() {
             var button = document.getElementById('clickButton');
             var counter = document.getElementById('counter');
             var randomColor = getRandomColor();
 
-            // Изменение цвета кнопки
-            button.style.backgroundColor = randomColor;
+            // Изменение фона
+            document.body.style.backgroundImage = `url('${randomColor}')`;
 
             // Отображение и анимация исчезновения цифры
             counter.classList.add('show-and-hide');
@@ -136,79 +90,15 @@
         }
 
         function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
+            // Возвращает случайный цвет в формате rgb
+            return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
         }
-    </script>
-<script>
-        let count = 0;
 
         function incrementCount() {
-            count++;
-            document.getElementById('count').innerText = count;
+            // Ваш JavaScript-код для увеличения счетчика
         }
     </script>
-<script>
-   let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
-
-   tg.expand(); //расширяем на все окно  
-
-   tg.MainButton.text = "Changed Text"; //изменяем текст кнопки 
-   tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
-   tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
-   tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
-   tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
-
-   let btn = document.getElementById("btn"); //получаем кнопку скрыть/показать 
-
-   btn.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-      if (tg.MainButton.isVisible){ //если кнопка показана 
-         tg.MainButton.hide() //скрываем кнопку 
-      }
-      else{ //иначе
-         tg.MainButton.show() //показываем 
-      }
-   });
-
-   let btnED = document.getElementById("btnED"); //получаем кнопку активировать/деактивировать
-   btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-      if (tg.MainButton.isActive){ //если кнопка показана 
-         tg.MainButton.setParams({"color": "#E0FFFF"}); //меняем цвет
-         tg.MainButton.disable() //скрываем кнопку 
-      }
-      else{ //иначе
-         tg.MainButton.setParams({"color": "#143F6B"}); //меняем цвет
-         tg.MainButton.enable() //показываем 
-      }
-   });
-
-   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData("some string that we need to send"); 
-      //при клике на основную кнопку отправляем данные в строковом виде
-   });
-   
-
-   let usercard = document.getElementById("usercard"); //получаем блок usercard 
-
-   let profName = document.createElement('p'); //создаем параграф
-   profName.innerText = `${tg.initDataUnsafe.user.first_name}
-   ${tg.initDataUnsafe.user.last_name}
-   ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
-   //выдем имя, "фамилию", через тире username и код языка
-   usercard.appendChild(profName); //добавляем 
-
-   let userid = document.createElement('p'); //создаем еще параграф 
-   userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
-   usercard.appendChild(userid); //добавляем
-
-
-   //работает только в attachment menu
-   // let pic = document.createElement('img'); //создаем img
-   // pic.src = tg.initDataUnsafe.user.photo_url; //задаём src 
-   // usercard.appendChild(pic); //добавляем элемент в карточку 
-</script>
+</body>
 </html>
+
+
