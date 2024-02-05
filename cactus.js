@@ -42,8 +42,8 @@ export function getCactusRects() {
 function createCactus() {
   const cactus = document.createElement("img")
   cactus.dataset.cactus = true
-  // cactus.src = "imgs/cactus.png"
-  cactus.src = "https://png.pngtree.com/png-clipart/20230330/original/pngtree-red-hot-burning-fire-flame-png-image_9010928.png"
+  cactus.src = "imgs/cactus.png"
+  // cactus.src = "https://png.pngtree.com/png-clipart/20230330/original/pngtree-red-hot-burning-fire-flame-png-image_9010928.png"
   cactus.classList.add("cactus")
   setCustomProperty(cactus, "--left", 100)
   worldElem.append(cactus)
