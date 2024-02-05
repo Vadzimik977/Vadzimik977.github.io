@@ -81,11 +81,13 @@ function Game () {
     this.context.fillStyle = "brown";
     document.spacePressed = false;
     document.addEventListener("keydown", function(e) {
-        if (e.key === " ") this.spacePressed = true;
-    });
+    if (e.key === " ") game.spacePressed = true;
+    }.bind(this));
+    
+    // Аналогично для keyup:
     document.addEventListener("keyup", function(e) {
-        if (e.key === " ") this.spacePressed = false;
-    });
+        if (e.key === " ") game.spacePressed = false;
+    }.bind(this));
     this.jumpButton = document.getElementById("jumpButton");
     this.jumpButton.addEventListener("click", this.handleJumpClick.bind(this));
     this.restartButton = document.getElementById("restartButton");
