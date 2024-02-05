@@ -1,3 +1,17 @@
 #game {
     background-color: black;
 }
+#controls {
+            width: 251px;
+            height: 251px;
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            color: #ffffff;
+            position: relative;
+            background-color: transparent; /* Прозрачный фон */
+            overflow: hidden;
+            transition: background-color 0.3s ease; /* Анимация перехода цвета кнопки */
+        }
