@@ -88,7 +88,8 @@ function Game () {
     });
     this.jumpButton = document.getElementById("jumpButton");
     this.jumpButton.addEventListener("click", this.handleJumpClick.bind(this));
-    
+    this.restartButton = document.getElementById("restartButton");
+    this.restartButton.addEventListener("click", this.handleRestartClick.bind(this));
     this.gravity = 1.5;
     this.divider = new Divider(this.width, this.height);
     this.dino = new Dinosaur(Math.floor(0.1 * this.width), this.divider.y);
@@ -111,6 +112,21 @@ Game.prototype.handleJumpClick = function() {
         console.log("Conditions met");
         this.dino.jump();
     }
+};
+Game.prototype.handleRestartClick = function() {
+    this.restartGame();
+};
+Game.prototype.restartGame = function() {
+    // Логика для перезапуска игры
+    this.dino = new Dinosaur(Math.floor(0.1 * this.width), this.divider.y);
+    this.cacti = [];
+    this.paused = false;
+    this.noOfFrames = 0;
+    this.score = 0;
+    this.jumpDistance = Math.floor(this.runSpeed * (2 * this.dino.jumpVelocity) / this.gravity);
+
+    // Скрыть кнопку Restart после перезапуска
+    this.restartButton.style.display = "none";
 };
 Game.prototype.update = function () {
     // Dinosaur jump start
@@ -183,6 +199,10 @@ Game.prototype.draw = function () {
     this.context.fillStyle = "white";
     this.context.fillText(this.score, this.width-40, 30);
     this.context.fillStyle = oldFill;
+    if (this.paused) {
+        this.restartButton.style.display = "block"; // Показать кнопку Restart в случае проигрыша
+        return;
+    }
 };
 
 var game = new Game();
