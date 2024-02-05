@@ -73,7 +73,7 @@ function handleStart() {
 function handleLose() {
   setDinoLose()
   setTimeout(() => {
-    document.addEventListener("keydown", handleStart, { once: true })
+    document.addEventListener("click", handleStart, { once: true })
     startScreenElem.classList.remove("hide")
   }, 100)
 }
