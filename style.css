@@ -11,7 +11,5 @@
             border: none;
             color: #ffffff;
             position: relative;
-            background-color: transparent; /* Прозрачный фон */
-            overflow: hidden;
-            transition: background-color 0.3s ease; /* Анимация перехода цвета кнопки */
+            
         }
