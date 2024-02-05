@@ -171,7 +171,13 @@ Game.prototype.draw = function () {
     for (i = 0; i < this.cacti.length; i++){
         this.cacti[i].draw(this.context);
     }
-
+    var jumpButton = document.getElementById("jumpButton");
+    jumpButton.addEventListener("click", function() {
+        if (bottomWall(game.dino) >= topWall(game.divider)) {
+            console.log("Conditions met");
+            game.dino.jump();
+        }
+    });
     var oldFill = this.context.fillStyle;
     this.context.fillStyle = "white";
     this.context.fillText(this.score, this.width-40, 30);
