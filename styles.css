@@ -18,10 +18,12 @@ body {
 
 .score {
   position: absolute;
-  font-size: 3vmin;
-  right: 1vmin;
+  font-size: 5vmin; /* увеличиваем шрифт */
+  left: 50%; /* размещаем в центре по горизонтали */
+  transform: translateX(-50%); /* коррекция для центрирования */
   top: 1vmin;
 }
+
 
 .start-screen {
   position: absolute;
