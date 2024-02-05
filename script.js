@@ -86,6 +86,9 @@ function Game () {
     document.addEventListener("keyup", function(e) {
         if (e.key === " ") this.spacePressed = false;
     });
+    this.jumpButton = document.getElementById("jumpButton");
+    this.jumpButton.addEventListener("click", this.handleJumpClick.bind(this));
+    
     this.gravity = 1.5;
     this.divider = new Divider(this.width, this.height);
     this.dino = new Dinosaur(Math.floor(0.1 * this.width), this.divider.y);
@@ -103,7 +106,12 @@ Game.prototype.spawnCactus = function(probability)
         this.cacti.push(new Cactus(this.width, this.divider.y));
     }
 }
-
+Game.prototype.handleJumpClick = function() {
+    if (bottomWall(this.dino) >= topWall(this.divider)) {
+        console.log("Conditions met");
+        this.dino.jump();
+    }
+};
 Game.prototype.update = function () {
     // Dinosaur jump start
 
@@ -171,13 +179,6 @@ Game.prototype.draw = function () {
     for (i = 0; i < this.cacti.length; i++){
         this.cacti[i].draw(this.context);
     }
-    var jumpButton = document.getElementById("jumpButton");
-    jumpButton.addEventListener("click", function() {
-        if (bottomWall(game.dino) >= topWall(game.divider)) {
-            console.log("Conditions met");
-            game.dino.jump();
-        }
-    });
     var oldFill = this.context.fillStyle;
     this.context.fillStyle = "white";
     this.context.fillText(this.score, this.width-40, 30);
