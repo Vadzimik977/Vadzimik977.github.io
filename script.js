@@ -90,8 +90,8 @@ function Game () {
     }.bind(this));
     this.jumpButton = document.getElementById("jumpButton");
     this.jumpButton.addEventListener("click", this.handleJumpClick.bind(this));
-    this.restartButton = document.getElementById("restartButton");
-    this.restartButton.addEventListener("click", this.handleRestartClick.bind(this));
+    this.restartButton.style.display = "none"; // добавьте эту строку для скрытия кнопки при инициализации
+    this.restartButton.addEventListener("click", () => this.handleRestartClick()); // добавьте эту строку для обработки клика на кнопке Restart
     this.gravity = 1.5;
     this.divider = new Divider(this.width, this.height);
     this.dino = new Dinosaur(Math.floor(0.1 * this.width), this.divider.y);
@@ -201,10 +201,7 @@ Game.prototype.draw = function () {
     this.context.fillStyle = "white";
     this.context.fillText(this.score, this.width-40, 30);
     this.context.fillStyle = oldFill;
-    if (this.paused) {
-        this.restartButton.style.display = "block"; // Показать кнопку Restart в случае проигрыша
-        return;
-    }
+    this.handleRestartClick = this.handleRestartClick.bind(this);
 };
 
 var game = new Game();
