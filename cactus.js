@@ -42,7 +42,7 @@ export function getCactusRects() {
 function createCactus() {
   const cactus = document.createElement("img")
   cactus.dataset.cactus = true
-  cactus.src= https://cdn-icons-png.flaticon.com/512/1141/1141743.png
+  cactus.src= "imgs/obstacle.png"
   // cactus.src = "imgs/cactus.png"
   // cactus.src = "https://png.pngtree.com/png-clipart/20230330/original/pngtree-red-hot-burning-fire-flame-png-image_9010928.png"
   cactus.classList.add("cactus")
