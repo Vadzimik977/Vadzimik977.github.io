@@ -34,7 +34,7 @@ export function getDinoRect() {
 }
 
 export function setDinoLose() {
-  dinoElem.src = "imgs/dino-lose.png"
+  dinoElem.src = "imgs/EB372607-9A35-4B57-88B7-484DC6643D22.png"
 }
 
 function handleRun(delta, speedScale) {
@@ -45,7 +45,7 @@ function handleRun(delta, speedScale) {
 
   if (currentFrameTime >= FRAME_TIME) {
     dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
-    dinoElem.src = `imgs/dino-run-${dinoFrame}.png`
+    dinoElem.src = `imgs/dino-run1-${dinoFrame}.png`
     currentFrameTime -= FRAME_TIME
   }
   currentFrameTime += delta * speedScale
